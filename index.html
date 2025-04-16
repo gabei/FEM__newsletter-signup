@@ -13,30 +13,17 @@
   <main>
     <h1>Form</h1>
 
-    <form id="form" action="">
-      <div>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" minlength="2" maxlength="20">
-        <span aria-live="polite" id="name-error"></span>
-      </div>
-      <div>
-        <label for="email">Email Address</label>
-        <input id="email" name="email" type="email" required>
-        <span aria-live="polite" id="email-error"></span>
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" minlength="8" maxlength="30" required>
-        <span aria-live="polite" id="password-error"></span>
-      </div>
-      <div>
-        <label for="confirm-password">Re-enter password</label>
-        <input id="confirm-password" name="confirm-password" type="password" required >
-        <span aria-live="polite" id="confirm-password-error"></span>
-      </div>
-      
-      <button>Submit</button>
+    <form id="contact-form" action="#">
+      <fieldset>
+        <div class="contact-form__row">
+          <label for="name" name="name"></label>
+          <input id="name" type="text" placeholder="John">
+        </div>
+      </fieldset>
+
+
     </form>
+    
   </main>
     
 
