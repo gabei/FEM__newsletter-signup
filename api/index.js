@@ -1,27 +1,8 @@
 const express = require('express');
 const validate = require('validatejs');
 const app = express();
+import constraints from './validation/constraints';
 app.use(express.json());
-
-
-const constraints = {
-  name: {
-    presence: true,
-    length: {
-      minimum: 2,
-      maximum: 20
-    }, 
-    format: {
-      pattern: "[a-zA-Z]",
-      message: "Name may only contain letters."
-    }
-  },
-  email: {
-    presence: true,
-    email: true
-  }
-}
-
 
 app.post('/contact', async (request, response) => {
   const isNotValid = validate(request.body, constraints);
