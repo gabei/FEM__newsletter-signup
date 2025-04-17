@@ -1,4 +1,3 @@
-console.log("yes it loaded.");
 
 
 const contactForm = document.getElementById("contact-form");
@@ -16,10 +15,10 @@ contactForm.addEventListener('submit', (e)=> {
 
 function validateForm(e){
   e.preventDefault();
-  let formIsValid = true;
 
-  formError.innerHTML = "";
+  let formIsValid = true;
   let errors = [];
+  formError.innerHTML = "";
 
   if(!isValidName(nameInput.value)){
     errors.push('Names must be between 2 and 20 characters long and contain no numbers');
@@ -31,15 +30,17 @@ function validateForm(e){
     formIsValid = false;
   }
 
-  formError.append(makeFormErrorListElements(errors));
+  formError.append(errorListElements(errors));
   return formIsValid;
 }
+
 
 function isValidEmail(address){
   address = address.trim();
   const regex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;
   return address.match(regex);
 }
+
 
 function isValidName(name){
   name = name.trim();
@@ -49,7 +50,8 @@ function isValidName(name){
     name.length <=20);
 }
 
-function makeFormErrorListElements(text){
+
+function errorListElements(text){
   let errorList = document.createElement("ul");
   text.forEach((msg) => {
     let errorItem = document.createElement("li");
