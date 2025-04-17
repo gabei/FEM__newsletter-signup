@@ -8,36 +8,41 @@ const formError = document.querySelector(".contact-form__error");
 
 
 contactForm.addEventListener('submit', (e)=> {
+  if(validateForm(e)){
+    contactForm.submit();
+    formError.innerText = "Form submitted!";
+  }
+})
+
+function validateForm(e){
   e.preventDefault();
+  let formIsValid = true;
 
   formError.innerHTML = "";
   let errors = [];
 
   if(!isValidName(nameInput.value)){
-    // error message
     errors.push('Names must be between 2 and 20 characters long and contain no numbers');
-    // aria-live update
+    formIsValid = false;
   }
 
   if(!isValidEmail(emailInput.value)) {
-    // error message
     errors.push('Please enter a valid email address.');
-    // aria-live update
+    formIsValid = false;
   }
 
   formError.append(makeFormErrorListElements(errors));
-  
-
-})
-
-
+  return formIsValid;
+}
 
 function isValidEmail(address){
+  address = address.trim();
   const regex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;
   return address.match(regex);
 }
 
 function isValidName(name){
+  name = name.trim();
   return (
     typeof name === "string" && 
     name.length >= 2 && 
