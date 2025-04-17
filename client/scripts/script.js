@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 
 
 const contactForm = document.getElementById("contact-form");
@@ -8,10 +9,15 @@ const formError = document.querySelector(".contact-form__error");
 
 contactForm.addEventListener('submit', (e)=> {
   if(validateForm(e)){
-    contactForm.submit();
     formError.innerText = "Form submitted!";
+    const formData = {
+      name: nameInput.value,
+      email: emailInput.value
+    }
+    postContactToApi(formData);
   }
-})
+});
+
 
 function validateForm(e){
   e.preventDefault();
@@ -60,3 +66,25 @@ function errorListElements(text){
   })
   return errorList;
 }
+
+
+async function postContactToApi(formData){
+  let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(formData),
+  }
+
+  try {
+    let response = await fetch('http://localhost:3000/contact', options);
+    let result = await response.json();
+    formError.innerHTML(result);
+  }
+
+  catch(e){
+    console.error(e);
+  };
+}
+
