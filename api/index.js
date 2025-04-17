@@ -1,8 +1,13 @@
-const express = require('express');
-const validate = require('validatejs');
+import validate from 'validatejs';
+import express from 'express';
+import constraints from './validation/constraints.js';
+import cors from 'cors';
+
+
 const app = express();
-import constraints from './validation/constraints';
 app.use(express.json());
+app.use(cors());
+
 
 app.post('/contact', async (request, response) => {
   const isNotValid = validate(request.body, constraints);
