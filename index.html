@@ -11,17 +11,21 @@
 <body>
   
   <main>
-    <h1>Form</h1>
+    <h1>Example</h1>
 
-    <form id="contact-form" action="#">
-      <fieldset>
-        <div class="contact-form__row">
-          <label for="name" name="name"></label>
-          <input id="name" type="text" placeholder="John">
-        </div>
-      </fieldset>
+    <form class="contact-form" id="contact-form" action="#" novalidate>
+      <div class="contact-form__error"></div>
+      <div class="contact-form__row">
+        <label for="name" name="name"></label>
+        <input id="name" type="text" placeholder="John" minlength="2" maxlength="20" required>
+      </div>
 
+      <div class="contact-form__row">
+        <label for="email" name="email"></label>
+        <input id="email" type="email" placeholder="john@example.com" required>
+      </div>
 
+      <button type="submit">Submit</button>
     </form>
     
   </main>
