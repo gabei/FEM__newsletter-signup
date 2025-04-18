@@ -74,6 +74,7 @@ async function postContactToApi(formData){
         'Content-Type' : 'application/json;charset=utf-8'
       },
       body: JSON.stringify(formData),
+      mode: "cors",
   }
 
   try {

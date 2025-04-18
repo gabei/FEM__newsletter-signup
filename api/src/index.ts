@@ -1,14 +1,10 @@
 import express, {Request, Response} from "express";
 const app = express();
 const cors = require('cors');
-const corsOptions = {
-  origin: [],
-  successStatus: 200
-}
 
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 app.post('/contact', async (req: Request, res: Response) => {
