@@ -1,0 +1,60 @@
+@use '../size/size.scss' as size;
+@use '../responsive/responsive.scss' as adjust;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+$regular: 400;
+$bold: 700;
+
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: $regular;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0px;
+}
+
+
+/*
+  - following specific font sizes are per design spec 
+  - 1rem = 16px 
+  - default font size is for mobile screens
+*/
+
+@mixin text-preset-1($screen-type: mobile) {
+  font-size: size.pixelToRem(88);
+  font-weight: $bold;
+  line-height: 1.0;
+
+  @include adjust.tablet {
+    font-size: size.pixelToRem(56);
+  }
+}
+
+@mixin text-preset-2($screen-type: mobile) {
+  font-size: size.pixelToRem(16);
+  font-weight: $bold;
+  line-height: 1.5;
+
+  @include adjust.tablet {
+    font-size: size.pixelToRem(36);
+  }
+
+  @include adjust.desktop {
+    font-size: size.pixelToRem(40);
+  }
+}
+
+@mixin text-preset-2--regular($screen-type: mobile) {
+  font-size: size.pixelToRem(16);
+  line-height: 1.5;
+}
+  
+@mixin text-preset-3() {
+  font-size: size.pixelToRem(12);
+  font-weight: $bold;
+  line-height: 1.5; 
+}
