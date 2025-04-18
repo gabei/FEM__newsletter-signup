@@ -19,7 +19,8 @@
   "homepage": "https://github.com/gabei/FEM__newsletter-signup#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",

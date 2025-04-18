@@ -1,10 +1,12 @@
 import express, {Request, Response} from "express";
 const app = express();
 const cors = require('cors');
+const helmet = require('helmet');
 
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
 
 app.post('/contact', async (req: Request, res: Response) => {
