@@ -1,0 +1,9 @@
+$white: #ffffff;
+$grey: #949494;
+$blue-700: #36384D;
+$blue-800: #242742;
+$red: #FF6155;
+
+@mixin gradient-4(){
+  background: linear-gradient(#FF6A3A to #FF527B);
+}
