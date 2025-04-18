@@ -4,9 +4,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 
+// basic middleware
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+app.disable('x-powered-by');
 
 
 app.post('/contact', async (req: Request, res: Response) => {
