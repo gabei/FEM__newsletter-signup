@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 
 
 const contactForm = document.getElementById("contact-form");
@@ -80,7 +79,7 @@ async function postContactToApi(formData){
   try {
     let response = await fetch('http://localhost:3000/contact', options);
     let result = await response.json();
-    formError.innerHTML(result);
+    formError.innerHTML = "Response from server: " + result.message;
   }
 
   catch(e){

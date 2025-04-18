@@ -1,6 +1,4 @@
-import validate from 'validatejs';
 import express from 'express';
-import constraints from './validation/constraints.js';
 import cors from 'cors';
 
 
@@ -10,11 +8,13 @@ app.use(cors());
 
 
 app.post('/contact', async (request, response) => {
-  const isNotValid = validate(request.body, constraints);
-  if(isNotValid) {
-    response.status(400).json({error: isNotValid});
-  } else {
-    response.status(200).json({message: "login success", data: request.body});
+  try {
+    console.log(request.body);
+    response.status(200).json({message: "login success!", data: request.body});
+  }
+  catch(e) {
+    console.log(e);
+    response.status(400).json({message: "problem logging in", data: e});
   }
 })
 

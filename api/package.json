@@ -18,7 +18,9 @@
   "homepage": "https://github.com/gabei/FEM__newsletter-signup#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "validatejs": "^0.0.2"
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
