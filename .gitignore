@@ -4,7 +4,7 @@
 *.xd
 
 # Dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 yarn.debug.log*
@@ -22,10 +22,9 @@ npm-debug.log*
 /coverage
 
 # Production
-/build
-/dist
-/.next
-/out
+dist
+
+
 
 # IDEs and editors
 /.idea
@@ -38,6 +37,3 @@ npm-debug.log*
 *.pem
 .DS_Store
 Thumbs.db
-
-# exclude node modules
-node_modules
