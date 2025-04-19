@@ -5,7 +5,9 @@ import { z, ZodError, ZodIssueCode } from 'zod';
 const userSchema = z.object({
     name: z.string()
     .min(2, { message: "Name must be 2 or more characters" })
-    .max(5, { message: "Name must be 20 characters or less" }),
+    .max(20, { message: "Name must be 20 characters or less" })
+    .refine((val) => /^[A-Za-z]+$/ig.test(val), "Name must only contain alphabetical characters"),
+
     email: z.string().email()
 })
 
@@ -23,7 +25,7 @@ function validateUser(user: userData): boolean | undefined {
     }
     catch(error){
         if(error instanceof ZodError){
-            throw new Error("ZOD returned an error during parsing:\n" + ZodIssueCode);
+            throw new Error("ZOD returned an error during parsing:\n" + error.message);
         } else {
             throw error;
         }
