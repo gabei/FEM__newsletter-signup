@@ -9,7 +9,7 @@ describe('ZOD user validation function', ()=> {
     test('Username is too short', () => {
         let invalidUserName = {
             name: "J",
-            email: "jameson@example.com"
+            email: "john@example.com"
         }
         expect(() => {
             validateUser(invalidUserName)
@@ -19,10 +19,32 @@ describe('ZOD user validation function', ()=> {
     
     test('Username is too long', () => {
         let invalidUserName = {
-            name: "Jameson Jonathen von Scramble the Third",
-            email: "jameson@example.com"
+            name: "Jameson Johnathan von Scramble the Eleventh",
+            email: "john@example.com"
         }
-        
+
+        expect(() => {
+            validateUser(invalidUserName)
+        }).toThrow()
+    })
+
+    test('Email is invalid', () => {
+        let invalidUserName = {
+            name: "Johnathen",
+            email: "john@gmail"
+        }
+
+        expect(() => {
+            validateUser(invalidUserName)
+        }).toThrow()
+    })
+
+    test('Username and email are both invalid', () => {
+        let invalidUserName = {
+            name: "A",
+            email: "A"
+        }
+
         expect(() => {
             validateUser(invalidUserName)
         }).toThrow()
@@ -32,7 +54,7 @@ describe('ZOD user validation function', ()=> {
     test('Username and email are valid', () => {
         let invalidUserName = {
             name: "John",
-            email: "jogn@example.com"
+            email: "jojn@example.com"
         }
         expect(validateUser(invalidUserName)).toEqual(true)
     })
