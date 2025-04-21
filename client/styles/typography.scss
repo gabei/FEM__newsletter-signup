@@ -25,7 +25,7 @@ body {
 */
 
 @mixin text-preset-1($screen-type: mobile) {
-  font-size: size.pixelToRem(88);
+  font-size: size.pixelToRem(44);
   font-weight: $bold;
   line-height: 1.0;
 

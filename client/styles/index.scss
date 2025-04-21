@@ -7,18 +7,21 @@
 .email-signup {
 
   &__hero {
-    border-radius: 0px 0px 5rem 5rem;
+    border-radius: 0px 0px 0.5rem 0.5rem;
     width: 100%;
   }
 
   &__content {
     display: flex;
-    gap: 1rem;
-    padding: 1rem;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    color: color.$blue-800;
 
     @include type.text-preset-2--regular;
 
     h1 {
+      
       @include type.text-preset-1;
     }
 
@@ -29,18 +32,27 @@
 }
 
 #contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   label {
     @include type.text-preset-3;
   }
 
   input {
     padding: 1rem;
-    border-radius: 5rem;
+    border: 1px solid color.$grey;
+    border-radius: 0.5rem;
   }
 
   button {
     background-color: color.$blue-800;
     color: color.$white;
+    border-radius:0.5rem;
+    padding:1rem;
+    border:none;
+    
     @include type.text-preset-2;
   }
 }

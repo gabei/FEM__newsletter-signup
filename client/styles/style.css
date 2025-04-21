@@ -48,18 +48,20 @@ body {
   - default font size is for mobile screens
 */
 .email-signup__hero {
-  border-radius: 0px 0px 5rem 5rem;
+  border-radius: 0px 0px 0.5rem 0.5rem;
   width: 100%;
 }
 .email-signup__content {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  color: #242742;
   font-size: 1rem;
   line-height: 1.5;
 }
 .email-signup__content h1 {
-  font-size: 5.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -68,6 +70,11 @@ body {
     font-size: 3.5rem;
   }
 }
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 #contact-form label {
   font-size: 0.75rem;
   font-weight: 700;
@@ -75,11 +82,15 @@ body {
 }
 #contact-form input {
   padding: 1rem;
-  border-radius: 5rem;
+  border: 1px solid #949494;
+  border-radius: 0.5rem;
 }
 #contact-form button {
   background-color: #242742;
   color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;

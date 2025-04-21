@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server --port=3500 --cors",
-    "sass":"sass styles/index.scss styles/style.css"
+    "sass":"sass styles/index.scss styles/style.css",
+    "sass-w": "sass --watch styles/index.scss styles/style.css"
   },
   "repository": {
     "type": "git",
