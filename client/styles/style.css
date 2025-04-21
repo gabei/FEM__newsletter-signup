@@ -76,14 +76,24 @@ body {
   gap: 0.5rem;
 }
 #contact-form label {
+  display: flex;
+  justify-content: space-between;
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.5;
+}
+#contact-form label span {
+  visibility: hidden;
+  color: #FF6155;
 }
 #contact-form input {
   padding: 1rem;
   border: 1px solid #949494;
   border-radius: 0.5rem;
+  color: inherit;
+}
+#contact-form input:focus-visible {
+  outline: none;
 }
 #contact-form button {
   background-color: #242742;
@@ -94,6 +104,9 @@ body {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
+}
+#contact-form button:hover {
+  cursor: pointer;
 }
 @media screen and (min-width: 640px) {
   #contact-form button {

@@ -37,13 +37,25 @@
   gap: 0.5rem;
 
   label {
+    display: flex;
+    justify-content: space-between;
     @include type.text-preset-3;
+
+    span {
+      visibility: hidden;
+      color: color.$red;
+    }
   }
 
   input {
     padding: 1rem;
     border: 1px solid color.$grey;
     border-radius: 0.5rem;
+    color: inherit;
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   button {
@@ -52,6 +64,10 @@
     border-radius:0.5rem;
     padding:1rem;
     border:none;
+
+    &:hover {
+      cursor: pointer;
+    }
     
     @include type.text-preset-2;
   }

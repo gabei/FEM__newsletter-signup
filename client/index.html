@@ -24,7 +24,9 @@
       </ul>
 
       <form class="contact-form" id="contact-form" novalidate>
-        <label for="email" name="email">Email address</label>
+        <label for="name" name="name">Name<span class="form-error">Valid name required</span></label>
+        <input id="name" type="name" placeholder="John Smith" required>
+        <label for="email" name="email">Email address <span class="form-error">Valid email required</span></label>
         <input id="email" type="email" placeholder="email@company.com" required>
         <button type="submit">Subscribe to monthly newsletter</button>
       </form>
