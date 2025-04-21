@@ -82,8 +82,7 @@ body {
   font-weight: 700;
   line-height: 1.5;
 }
-#contact-form label span {
-  visibility: hidden;
+#contact-form label span.name-error, #contact-form label span.email-error {
   color: #FF6155;
 }
 #contact-form input {
@@ -117,6 +116,10 @@ body {
   #contact-form button {
     font-size: 2.5rem;
   }
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

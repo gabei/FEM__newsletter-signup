@@ -1,54 +1,69 @@
 
-
 const contactForm = document.getElementById("contact-form");
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const formError = document.querySelector(".contact-form__error");
 const signupSuccess = document.getElementById("success");
 
+const userName = {
+  input: document.getElementById("name"),
+  error: document.querySelector(".name-error"),
+}
 
-contactForm.addEventListener('submit', async (event)=> {
-  await tryEmailSignup(event).then((data)=> {
-    updatePageWithResponse(data);
-  })
-  
+const userEmail = {
+  input: document.getElementById("email"),
+  error: document.querySelector(".email-error"),
+}
+
+
+contactForm.addEventListener('submit', async (e) => {
+  let data = await tryEmailSignup(e);
+  console.log(data);
 });
+  
 
 async function tryEmailSignup(event){
-  if(validateForm(event)){
-    formError.innerText = "Form submitted!";
-    const formData = {
-      name: nameInput.value,
-      email: emailInput.value
-    }
-    return postContactToApi(formData);
+  event.preventDefault();
+  try {
+    return (
+      validateForm() 
+      ? postContactToApi({
+          name: userName.input.value,
+          email: userEmail.input.value
+        })
+      : null
+    )
+  }
+  catch(error)
+  {
+    console.log(error);
+    return "Email signup unsuccessful.\n" + error;
   }
 }
 
-async function updatePageWithResponse(data){
-  signupSuccess.innerText = `Signup for ${data.user.email} successful! Welcome ${data.user.name}!`;
+function displayErrorMessage() {
+  alert("Signup error");
 }
 
 
-function validateForm(e){
-  e.preventDefault();
 
+function validateForm(){
   let formIsValid = true;
-  let errors = [];
-  formError.innerHTML = "";
-
-  if(!isValidName(nameInput.value)){
-    errors.push('Names must be between 2 and 20 characters long and contain no numbers');
+  resetErrorText();
+  
+  if(!isValidName(userName.input.value)){
+    userName.error.classList.remove("hidden");
     formIsValid = false;
   }
 
-  if(!isValidEmail(emailInput.value)) {
-    errors.push('Please enter a valid email address.');
+  if(!isValidEmail(userEmail.input.value)) {
+    userEmail.error.classList.remove("hidden");
     formIsValid = false;
   }
 
-  formError.append(errorListElements(errors));
   return formIsValid;
+}
+
+function resetErrorText(){
+  userName.error.classList.add("hidden");
+  userEmail.error.classList.add("hidden");
 }
 
 
@@ -60,22 +75,14 @@ function isValidEmail(address){
 
 
 function isValidName(name){
+  const nameRegex = /[A-Za-z]/ig;
   name = name.trim();
+
   return (
     typeof name === "string" && 
     name.length >= 2 && 
-    name.length <=20);
-}
-
-
-function errorListElements(text){
-  let errorList = document.createElement("ul");
-  text.forEach((msg) => {
-    let errorItem = document.createElement("li");
-    errorItem.innerText = msg;
-    errorList.append(errorItem);
-  })
-  return errorList;
+    name.length <=20) &&
+    nameRegex.test(name);
 }
 
 
@@ -96,6 +103,7 @@ async function postContactToApi(formData){
   }
 
   catch(e){
+    // redirect or reload page. Display error message to user
     console.error(e);
   };
 }
