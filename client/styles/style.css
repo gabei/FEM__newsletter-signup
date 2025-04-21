@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+/* 
+CSS reset derived from Josh Comeau's defaults
+found here : https://www.joshwcomeau.com/css/custom-css-reset/ 
+*/
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 0px;
+}
+
+/*
+  - following specific font sizes are per design spec 
+  - 1rem = 16px 
+  - default font size is for mobile screens
+*/
+.email-signup__hero {
+  border-radius: 0px 0px 5rem 5rem;
+  width: 100%;
+}
+.email-signup__content {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.email-signup__content h1 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+@media screen and (min-width: 640px) {
+  .email-signup__content h1 {
+    font-size: 3.5rem;
+  }
+}
+#contact-form label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+#contact-form input {
+  padding: 1rem;
+  border-radius: 5rem;
+}
+#contact-form button {
+  background-color: #242742;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+@media screen and (min-width: 640px) {
+  #contact-form button {
+    font-size: 2.25rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #contact-form button {
+    font-size: 2.5rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
