@@ -12,16 +12,20 @@ app.use(helmet());
 app.disable('x-powered-by');
 
 
-app.post('/contact', async (req: Request, res: Response) => {
-  try {
-    const validatedUserData = validateUser(req.body);
+app.post('/contact', async (req: Request, res: Response, next) => {
+  try 
+  {
+    const validatedUserData: boolean | undefined = validateUser(req.body);
     if(validatedUserData){
-      res.status(200).json({message: "login success!", data: validatedUserData});
+      res.status(200).json({
+        message: "Signup successful!", 
+        user: req.body
+      });
     }
-  }
-  
-  catch(e) {
-    console.log(e);
+  } 
+  catch(e: any) 
+  {
+    next(e);
     res.status(400).json({message: "problem logging in", data: e});
   }
 })

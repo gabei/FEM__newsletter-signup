@@ -4,18 +4,30 @@ const contactForm = document.getElementById("contact-form");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const formError = document.querySelector(".contact-form__error");
+const signupSuccess = document.getElementById("success");
 
 
-contactForm.addEventListener('submit', (e)=> {
-  if(validateForm(e)){
+contactForm.addEventListener('submit', async (event)=> {
+  await tryEmailSignup(event).then((data)=> {
+    updatePageWithResponse(data);
+  })
+  
+});
+
+async function tryEmailSignup(event){
+  if(validateForm(event)){
     formError.innerText = "Form submitted!";
     const formData = {
       name: nameInput.value,
       email: emailInput.value
     }
-    postContactToApi(formData);
+    return postContactToApi(formData);
   }
-});
+}
+
+async function updatePageWithResponse(data){
+  signupSuccess.innerText = `Signup for ${data.user.email} successful! Welcome ${data.user.name}!`;
+}
 
 
 function validateForm(e){
@@ -80,7 +92,7 @@ async function postContactToApi(formData){
   try {
     let response = await fetch('http://localhost:3000/contact', options);
     let result = await response.json();
-    formError.innerHTML = "Response from server: " + result.message;
+    return result;
   }
 
   catch(e){
